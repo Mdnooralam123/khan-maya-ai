@@ -1,0 +1,17 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.myraa.ai'
+    compileSdk 35
+    defaultConfig { applicationId 'com.myraa.ai'; minSdk 26; targetSdk 35; versionCode 152; versionName '1.5.2' }
+    buildTypes { debug { minifyEnabled false }; release { minifyEnabled false } }
+    sourceSets { main { assets.srcDirs = ['src/main/assets'] } }
+}
+
+dependencies { implementation 'androidx.webkit:webkit:1.12.1' }
+
+tasks.register('syncWebAssets', Copy) {
+    from(rootProject.file('../dist'))
+    into('src/main/assets/www')
+}
+preBuild.dependsOn(syncWebAssets)

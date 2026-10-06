@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom smooth transition classes */
+.theme-transition {
+  transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-image 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.8s ease;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+
+
+/* Android phone layout: preserve the desktop visual language, but never force
+   desktop-width panels onto a narrow phone viewport. */
+html, body, #root { width: 100%; min-width: 0; min-height: 100%; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+@media (max-width: 700px) {
+  .myraa-app-root { padding: 12px !important; height: 100dvh !important; min-height: 100dvh !important; }
+  .myraa-app-root header { max-width: none !important; gap: 8px; }
+  .myraa-app-root header > div:last-child { gap: 7px !important; }
+  .myraa-app-root header span { letter-spacing: .18em !important; font-size: 11px !important; }
+  .myraa-app-root main { max-width: none !important; padding-top: 4px !important; padding-bottom: 4px !important; }
+  .myraa-app-root #cinematic-subtitles { max-width: calc(100vw - 24px) !important; padding-left: 8px !important; padding-right: 8px !important; margin-bottom: 8px !important; }
+  .myraa-app-root footer { max-width: calc(100vw - 24px) !important; gap: 9px !important; }
+  .myraa-app-root footer form { max-width: none !important; padding: 6px !important; }
+  .myraa-app-root footer button[aria-label="Send message"] { width: 38px !important; height: 38px !important; }
+  .myraa-app-root footer .w-20.h-20 { width: 64px !important; height: 64px !important; }
+  .myraa-app-root .w-[500px], .myraa-app-root .w-[600px] { max-width: 85vw; }
+  .myraa-character-studio { display: flex !important; flex-direction: column !important; overflow: hidden !important; }
+  .myraa-character-list { width: 100% !important; height: auto !important; max-height: 31dvh !important; flex: 0 0 auto !important; border-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,.1) !important; }
+  .myraa-character-list > div:nth-child(2) { max-height: 12dvh !important; overflow-y: auto !important; }
+  .myraa-character-list > div:last-child { padding: 8px !important; }
+  .myraa-character-studio main { min-height: 38dvh !important; flex: 1 1 auto !important; }
+  .myraa-character-studio main > div:first-child { flex-wrap: wrap !important; max-height: 82px; overflow-y: auto; padding: 7px !important; }
+  .myraa-character-panels { width: 100% !important; max-height: 31dvh !important; flex: 0 0 31dvh !important; border-left: 0 !important; border-top: 1px solid rgba(255,255,255,.1) !important; }
+  .myraa-character-panels nav { overflow-x: auto !important; }
+  .myraa-character-panels > div:last-child { overflow-y: auto !important; }
+  .myraa-character-studio input { min-width: 0 !important; }
+}
+@media (max-width: 380px) {
+  .myraa-app-root { padding: 8px !important; }
+  .myraa-app-root header span { font-size: 10px !important; }
+  .myraa-app-root header svg { width: 13px !important; height: 13px !important; }
+  .myraa-app-root footer .w-20.h-20 { width: 58px !important; height: 58px !important; }
+}
